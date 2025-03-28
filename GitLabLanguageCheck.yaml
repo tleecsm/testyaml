@@ -1,0 +1,14 @@
+---
+id: gitlab_language_check
+name: GitLab Language Check
+ownerEntityRef: group:default/scrum-se
+description: 'Checks that a service''s GitLab repository is primarily C# code. '
+rule:
+  all:
+    - factRef: gitlab:default/project_languages
+      path: $."C#"
+      operator: greaterThan
+      value: 75
+pathResolver: jsonpath
+passedMessage: This project is more than 75% C#
+failedMessage: This project is less than 75% C#

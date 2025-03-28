@@ -1,0 +1,14 @@
+---
+id: gitlab_avatar_check
+name: GitLab Avatar Check
+ownerEntityRef: group:default/scrum-se
+description: Checks that a service's GitLab repository has an avatar set.
+rule:
+  all:
+    - factRef: gitlab:default/project_details
+      path: $.avatar_url
+      operator: exists
+      value: true
+pathResolver: jsonpath
+passedMessage: This project has an avatar set.
+failedMessage: This project does not an avatar set.
